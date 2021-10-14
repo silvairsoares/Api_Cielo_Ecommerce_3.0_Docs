@@ -1,0 +1,1799 @@
+{
+	"info": {
+		"_postman_id": "aff608aa-fdae-40ec-9cca-31ceaad5574b",
+		"name": "API Cielo e-Commerce - Manual",
+		"description": "Coleção destinada a utilização no Manual 3.0 - NÃO DEVE SER APAGADA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sales",
+			"item": [
+				{
+					"name": "{payment Id}",
+					"item": [
+						{
+							"name": "Void - By PaymentID - Parcial",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sales/:paymentId/void?amount={{Valor}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales",
+										":paymentId",
+										"void"
+									],
+									"query": [
+										{
+											"key": "amount",
+											"value": "{{Valor}}",
+											"description": "(Required) "
+										}
+									],
+									"variable": [
+										{
+											"key": "paymentId",
+											"value": "culpa in dolor",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "{{merchantId}}"
+											},
+											{
+												"description": "(Required) ",
+												"key": "Content-Type",
+												"value": "text/json"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "{{merchantKey}}"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/sales/:paymentId/void?amount={{Valor}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"sales",
+												":paymentId",
+												"void"
+											],
+											"query": [
+												{
+													"key": "amount",
+													"value": "{{Valor}}"
+												}
+											],
+											"variable": [
+												{
+													"key": "paymentId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Capture - By PaymentID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sales/:paymentId/capture",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales",
+										":paymentId",
+										"capture"
+									],
+									"variable": [
+										{
+											"key": "paymentId",
+											"value": "culpa in dolor",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "{{merchantId}}"
+											},
+											{
+												"description": "(Required) ",
+												"key": "Content-Type",
+												"value": "text/json"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "{{merchantKey}}"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/sales/:paymentId/capture",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"sales",
+												":paymentId",
+												"capture"
+											],
+											"variable": [
+												{
+													"key": "paymentId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Authorize - CreditCard - Mínimo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantid}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantkey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"MerchantOrderId\": \"2014111703\",\n    \"Payment\": {\n        \"Type\": \"CreditCard\",\n        \"Amount\": 15700,\n        \"Installments\": 1,\n        \"SoftDescriptor\": \"123456789ABCD\",\n        \"CreditCard\": {\n            \"CardNumber\": \"4551870000000183\",\n            \"Holder\": \"Teste Holder\",\n            \"ExpirationDate\": \"12/2021\",\n            \"SecurityCode\": \"123\",\n            \"Brand\": \"Visa\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantid}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantkey}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"MerchantOrderId\": \"2014111703\",\n    \"Payment\": {\n        \"Type\": \"CreditCard\",\n        \"Amount\": 15700,\n        \"Installments\": 1,\n        \"SoftDescriptor\": \"123456789ABCD\",\n        \"CreditCard\": {\n            \"CardNumber\": \"4551870000000183\",\n            \"Holder\": \"Teste Holder\",\n            \"ExpirationDate\": \"12/2021\",\n            \"SecurityCode\": \"123\",\n            \"Brand\": \"Visa\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/sales",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Connection",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Length",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Date",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Expires",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Location",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Pragma",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Server",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "X-Response-Time",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"MerchantOrderId\": \"2014111703\",\n \"Customer\": {\n  \"Name\": \"[Guest]\"\n },\n \"Payment\": {\n  \"ServiceTaxAmount\": 0,\n  \"Installments\": 1,\n  \"Interest\": 0,\n  \"Capture\": false,\n  \"Authenticate\": false,\n  \"Recurrent\": false,\n  \"CreditCard\": {\n   \"CardNumber\": \"455187******0181\",\n   \"Holder\": \"Teste Holder\",\n   \"ExpirationDate\": \"12/2021\",\n   \"SaveCard\": false,\n   \"Brand\": \"Visa\"\n  },\n  \"Tid\": \"0407120858677\",\n  \"ProofOfSale\": \"858677\",\n  \"AuthorizationCode\": \"408180\",\n  \"SoftDescriptor\": \"123456789ABCD\",\n  \"Provider\": \"Simulado\",\n  \"PaymentId\": \"eb616a9f-00bc-437d-bbf8-0f5e8a3e716c\",\n  \"Type\": \"CreditCard\",\n  \"Amount\": 15700,\n  \"ReceivedDate\": \"2017-04-07 12:08:58\",\n  \"Currency\": \"BRL\",\n  \"Country\": \"BRA\",\n  \"ReturnCode\": \"4\",\n  \"ReturnMessage\": \"Operation Successful\",\n  \"Status\": 1,\n  \"Links\": [\n   {\n    \"Method\": \"GET\",\n    \"Rel\": \"self\",\n    \"Href\": \"https://apiquerydev.cieloecommerce.cielo.com.br/1/sales/eb616a9f-00bc-437d-bbf8-0f5e8a3e716c\"\n   },\n   {\n    \"Method\": \"PUT\",\n    \"Rel\": \"capture\",\n    \"Href\": \"https://apidev.cieloecommerce.cielo.com.br/1/sales/eb616a9f-00bc-437d-bbf8-0f5e8a3e716c/capture\"\n   },\n   {\n    \"Method\": \"PUT\",\n    \"Rel\": \"void\",\n    \"Href\": \"https://apidev.cieloecommerce.cielo.com.br/1/sales/eb616a9f-00bc-437d-bbf8-0f5e8a3e716c/void\"\n   }\n  ]\n }\n}"
+						}
+					]
+				},
+				{
+					"name": "Void - By PaymentID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/sales/5f4e6d0a-0dc3-489f-a967-b7af760eb892/void",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"5f4e6d0a-0dc3-489f-a967-b7af760eb892",
+								"void"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "text/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sales/5f4e6d0a-0dc3-489f-a967-b7af760eb892/void",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales",
+										"5f4e6d0a-0dc3-489f-a967-b7af760eb892",
+										"void"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Void - By MerchantOrderId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/sales/orderId/2014111703/void",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"orderId",
+								"2014111703",
+								"void"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "text/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sales/orderId/2014111703/void",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales",
+										"orderId",
+										"2014111703",
+										"void"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/sales/7bb58766-d579-47e6-848c-9842065d3a71",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"7bb58766-d579-47e6-848c-9842065d3a71"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "text/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sales/7bb58766-d579-47e6-848c-9842065d3a71",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sales",
+										"7bb58766-d579-47e6-848c-9842065d3a71"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recurrent Payment",
+			"item": [
+				{
+					"name": "38ce7f41-b952-4136-9905-6138ba0c02cc",
+					"item": [
+						{
+							"name": "Update - Recurrent - Customer",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Customer\",\n    \"Email\": \"customer@teste.com\",\n    \"Birthdate\": \"1999-12-12\",\n    \"Identity\": \"22658954236\",\n    \"IdentityType\": \"CPF\",\n    \"Address\": {\n        \"Street\": \"Rua Teste\",\n        \"Number\": \"174\",\n        \"Complement\": \"AP 201\",\n        \"ZipCode\": \"21241140\",\n        \"City\": \"Rio de Janeiro\",\n        \"State\": \"RJ\",\n        \"Country\": \"BRA\"\n    },\n    \"DeliveryAddress\": {\n        \"Street\": \"Outra Rua Teste\",\n        \"Number\": \"123\",\n        \"Complement\": \"AP 111\",\n        \"ZipCode\": \"21241111\",\n        \"City\": \"Qualquer Lugar\",\n        \"State\": \"QL\",\n        \"Country\": \"BRA\",\n        \"District\": \"Teste\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/38ce7f41-b952-4136-9905-6138ba0c02cc/Customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"38ce7f41-b952-4136-9905-6138ba0c02cc",
+										"Customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"Name\": \"Customer\",\n    \"Email\": \"customer@teste.com\",\n    \"Birthdate\": \"1999-12-12\",\n    \"Identity\": \"22658954236\",\n    \"IdentityType\": \"CPF\",\n    \"Address\": {\n        \"Street\": \"Rua Teste\",\n        \"Number\": \"174\",\n        \"Complement\": \"AP 201\",\n        \"ZipCode\": \"21241140\",\n        \"City\": \"Rio de Janeiro\",\n        \"State\": \"RJ\",\n        \"Country\": \"BRA\"\n    },\n    \"DeliveryAddress\": {\n        \"Street\": \"Outra Rua Teste\",\n        \"Number\": \"123\",\n        \"Complement\": \"AP 111\",\n        \"ZipCode\": \"21241111\",\n        \"City\": \"Qualquer Lugar\",\n        \"State\": \"QL\",\n        \"Country\": \"BRA\",\n        \"District\": \"Teste\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/38ce7f41-b952-4136-9905-6138ba0c02cc/Customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"38ce7f41-b952-4136-9905-6138ba0c02cc",
+												"Customer"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update - Recurrent - EndDate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\\\"2021-01-09\\\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/38ce7f41-b952-4136-9905-6138ba0c02cc/EndDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"38ce7f41-b952-4136-9905-6138ba0c02cc",
+										"EndDate"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "\"\\\"2021-01-09\\\"\""
+										},
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/38ce7f41-b952-4136-9905-6138ba0c02cc/EndDate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"38ce7f41-b952-4136-9905-6138ba0c02cc",
+												"EndDate"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "6716406f-1cba-4c7a-8054-7e8988032b17",
+					"item": [
+						{
+							"name": "Update - Recurrent - Interval",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "6"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Interval",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"6716406f-1cba-4c7a-8054-7e8988032b17",
+										"Interval"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "6"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Interval",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"6716406f-1cba-4c7a-8054-7e8988032b17",
+												"Interval"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update - Recurrent - Reactivate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Reactivate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"6716406f-1cba-4c7a-8054-7e8988032b17",
+										"Reactivate"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "Content-Type",
+												"value": "text/json"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Reactivate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"6716406f-1cba-4c7a-8054-7e8988032b17",
+												"Reactivate"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update - Recurrent - Installments",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "6"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Installments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"6716406f-1cba-4c7a-8054-7e8988032b17",
+										"Installments"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "6"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Installments",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"6716406f-1cba-4c7a-8054-7e8988032b17",
+												"Installments"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update - Recurrent - Amount",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "156"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Amount",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"6716406f-1cba-4c7a-8054-7e8988032b17",
+										"Amount"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "MerchantId",
+												"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+											},
+											{
+												"description": "(Required) ",
+												"key": "MerchantKey",
+												"value": "0123456789012345678901234567890123456789"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "156"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/RecurrentPayment/6716406f-1cba-4c7a-8054-7e8988032b17/Amount",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"RecurrentPayment",
+												"6716406f-1cba-4c7a-8054-7e8988032b17",
+												"Amount"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get - RecurrentPayment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/RecurrentPayment/c30f5c78-fca2-459c-9f3c-9c4b41b09048",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecurrentPayment",
+								"c30f5c78-fca2-459c-9f3c-9c4b41b09048"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "text/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/c30f5c78-fca2-459c-9f3c-9c4b41b09048",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"c30f5c78-fca2-459c-9f3c-9c4b41b09048"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update - Recurrent - RecurrencyDay",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "0123456789012345678901234567890123456789"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "23"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/RecurrentPayment/6a746229-cbeb-4d05-bdb0-6b45a2e2e461/RecurrencyDay",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecurrentPayment",
+								"6a746229-cbeb-4d05-bdb0-6b45a2e2e461",
+								"RecurrencyDay"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "23"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/6a746229-cbeb-4d05-bdb0-6b45a2e2e461/RecurrencyDay",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"6a746229-cbeb-4d05-bdb0-6b45a2e2e461",
+										"RecurrencyDay"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update - Recurrent - Deactivate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/RecurrentPayment/c4bc2199-f43a-4405-bfe4-272a2f00c367/Deactivate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecurrentPayment",
+								"c4bc2199-f43a-4405-bfe4-272a2f00c367",
+								"Deactivate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "text/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/c4bc2199-f43a-4405-bfe4-272a2f00c367/Deactivate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"c4bc2199-f43a-4405-bfe4-272a2f00c367",
+										"Deactivate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update - Recurrent - Payment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "0123456789012345678901234567890123456789"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Type\": \"CreditCard\",\n    \"Amount\": \"123\",\n    \"Installments\": 1,\n    \"CreditCard\": {\n        \"Brand\": \"Master\",\n        \"Holder\": \"Teset card\",\n        \"CardNumber\": \"1234123412341232\",\n        \"ExpirationDate\": \"05/2019\"\n    },\n    \"Country\": \"USA\",\n    \"Currency\": \"USD\",\n    \"SoftDescriptor\": \"test\",\n    \"Provider\": \"Simulado\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/RecurrentPayment/11af5932-68e3-43e2-bb5d-1c368b969e06/Payment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecurrentPayment",
+								"11af5932-68e3-43e2-bb5d-1c368b969e06",
+								"Payment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Type\": \"CreditCard\",\n    \"Amount\": \"123\",\n    \"Installments\": 1,\n    \"CreditCard\": {\n        \"Brand\": \"Master\",\n        \"Holder\": \"Teset card\",\n        \"CardNumber\": \"1234123412341232\",\n        \"ExpirationDate\": \"05/2019\"\n    },\n    \"Country\": \"USA\",\n    \"Currency\": \"USD\",\n    \"SoftDescriptor\": \"test\",\n    \"Provider\": \"Simulado\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/11af5932-68e3-43e2-bb5d-1c368b969e06/Payment",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"11af5932-68e3-43e2-bb5d-1c368b969e06",
+										"Payment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update - Recurrent - NextPaymentDate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "0123456789012345678901234567890123456789"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\\\"2015-06-25\\\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/RecurrentPayment/2bc419b4-0eb3-4c9c-88a9-280e8ce3a335/NextPaymentDate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecurrentPayment",
+								"2bc419b4-0eb3-4c9c-88a9-280e8ce3a335",
+								"NextPaymentDate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "94E5EA52-79B0-7DBA-1867-BE7B081EDD97"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "0123456789012345678901234567890123456789"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\\\"2015-06-25\\\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/RecurrentPayment/2bc419b4-0eb3-4c9c-88a9-280e8ce3a335/NextPaymentDate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"RecurrentPayment",
+										"2bc419b4-0eb3-4c9c-88a9-280e8ce3a335",
+										"NextPaymentDate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "card",
+			"item": [
+				{
+					"name": "Card - Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CustomerName\": \"Paulo Henrique\",\n    \"CardNumber\": \"4929592299120131\",\n    \"Holder\": \"Teste Holder\",\n    \"ExpirationDate\": \"12/2018\",\n    \"Brand\": \"Visa\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/card",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"card"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CustomerName\": \"Paulo Henrique\",\n    \"CardNumber\": \"4929592299120131\",\n    \"Holder\": \"Teste Holder\",\n    \"ExpirationDate\": \"12/2018\",\n    \"Brand\": \"Visa\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/card",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"card"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Card - Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/card/0e310ad0-622e-4374-92bd-3ed17f1d6709",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"card",
+								"0e310ad0-622e-4374-92bd-3ed17f1d6709"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "MerchantId",
+										"value": "{{merchantId}}"
+									},
+									{
+										"description": "(Required) ",
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "(Required) ",
+										"key": "MerchantKey",
+										"value": "{{merchantKey}}"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/card/0e310ad0-622e-4374-92bd-3ed17f1d6709",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"card",
+										"0e310ad0-622e-4374-92bd-3ed17f1d6709"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ZeroAuth - CardToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "(Required) ",
+						"key": "MerchantId",
+						"value": "{{merchantId}}"
+					},
+					{
+						"description": "(Required) ",
+						"key": "MerchantKey",
+						"value": "{{merchantKey}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CardToken\": \"23712c39-bb08-4030-86b3-490a223a8cc9\",\n    \"SaveCard\": \"false\",\n    \"Brand\": \"Visa\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/zeroauth",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"zeroauth"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CardToken\": \"23712c39-bb08-4030-86b3-490a223a8cc9\",\n    \"SaveCard\": \"false\",\n    \"Brand\": \"Visa\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/zeroauth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zeroauth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Bin Query",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) ",
+						"key": "MerchantId",
+						"value": "{{merchantId}}"
+					},
+					{
+						"description": "(Required) ",
+						"key": "MerchantKey",
+						"value": "{{merchantKey}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cardBin/401200",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cardBin",
+						"401200"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "MerchantId",
+								"value": "{{merchantId}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "MerchantKey",
+								"value": "{{merchantKey}}"
+							},
+							{
+								"description": "(Required) ",
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cardBin/401200",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cardBin",
+								"401200"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://example.com/1",
+			"type": "string"
+		}
+	]
+}
